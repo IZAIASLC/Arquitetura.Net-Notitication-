@@ -1,0 +1,318 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Api</name>
+    </assembly>
+    <members>
+        <member name="T:Api.Authorize.CustomAutorizeAttribute">
+            <summary>
+            Filtro customizado de autorização.
+            </summary>
+        </member>
+        <member name="M:Api.Authorize.CustomAutorizeAttribute.#ctor">
+            <summary>
+            Filtro de autorização.
+            </summary>
+        </member>
+        <member name="T:Api.Authorize.CustomAutorizeFilter">
+            <summary>
+            Customização do filtro de autorização.
+            </summary>
+        </member>
+        <member name="M:Api.Authorize.CustomAutorizeFilter.OnAuthorization(Microsoft.AspNetCore.Mvc.Filters.AuthorizationFilterContext)">
+            <summary>
+            Implementação da customização
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="T:Api.Controllers.Base.ControllerBase">
+            <summary>
+            Controller base
+            </summary>
+        </member>
+        <member name="M:Api.Controllers.Base.ControllerBase.#ctor(Infra.Transactions.Interfaces.IUnitOfWork)">
+            <summary>
+            Contrutor da controller base
+            </summary>
+            <param name="unitOfWork"></param>
+        </member>
+        <member name="M:Api.Controllers.Base.ControllerBase.ResponseAsync(System.Object,Domain.Interfaces.Base.IServiceBase)">
+            <summary>
+            Retorna o resultado da requisição.
+            </summary>
+            <param name="result"></param>
+            <param name="serviceBase"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.Base.ControllerBase.ResponseExceptionAsync(System.Exception)">
+            <summary>
+            Retorna o resultado da requisição caso haja exception.
+            </summary>
+            <param name="ex"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.Base.ControllerBase.Dispose(System.Boolean)">
+            <summary>
+            Destrutor padrão.
+            </summary>
+            <param name="disposing"></param>
+        </member>
+        <member name="T:Api.Controllers.CanalController">
+            <summary>
+            Controller de canal.
+            </summary>
+        </member>
+        <member name="M:Api.Controllers.CanalController.#ctor(Infra.Transactions.Interfaces.IUnitOfWork,Domain.Interfaces.Services.IServiceCanal,Api.Security.AuthenticatedUser)">
+            <summary>
+            Construtor do canal.
+            </summary>
+            <param name="unitOfWork">O método responsável pelo commit.</param>
+            <param name="serviceCanal">O serviço de canal.</param>
+            <param name="authenticatedUser">Obtém o usuário autenticado</param>
+        </member>
+        <member name="M:Api.Controllers.CanalController.Listar">
+            <summary>
+            Serviço para listar canais do usuário logado.
+            </summary>
+            <returns>A lista de canais.</returns>
+        </member>
+        <member name="M:Api.Controllers.CanalController.Adicionar(Domain.Arguments.Canal.AdicionarCanalRequest)">
+            <summary>
+            Adicionar um novo canal.
+            </summary>
+            <param name="request">O objeto canal.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.CanalController.Excluir(System.Guid)">
+            <summary>
+            Excluir um canal.
+            </summary>
+            <param name="idCanal">O identificador do canal.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Api.Controllers.PlayListController">
+            <summary>
+            Controller de playList.
+            </summary>
+        </member>
+        <member name="M:Api.Controllers.PlayListController.#ctor(Infra.Transactions.Interfaces.IUnitOfWork,Domain.Interfaces.Services.IServicePlayList,Api.Security.AuthenticatedUser)">
+            <summary>
+            Construtor da playList.
+            </summary>
+            <param name="unitOfWork">O método responsável pelo commit.</param>
+            <param name="servicePlayList">O serviço da playList.</param>
+            <param name="authenticatedUser">Obtém o usuário autenticado</param>
+        </member>
+        <member name="M:Api.Controllers.PlayListController.Listar">
+            <summary>
+            Serviço para listar as playLists do usuário logado.
+            </summary>
+            <returns>A lista de playLists.</returns>
+        </member>
+        <member name="M:Api.Controllers.PlayListController.Adicionar(Domain.Arguments.PlayList.AdicionarPlayListRequest)">
+            <summary>
+            Adicionar uma nova playList.
+            </summary>
+            <param name="request">O objeto playList.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.PlayListController.Excluir(System.Guid)">
+            <summary>
+            Excluir uma playList.
+            </summary>
+            <param name="idPlayList">O identificador da playList.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Api.Controllers.UsuarioController">
+            <summary>
+            Controller de usuário.
+            </summary>
+        </member>
+        <member name="M:Api.Controllers.UsuarioController.#ctor(Infra.Transactions.Interfaces.IUnitOfWork,Domain.Interfaces.Services.IServiceUsuario,Domain.Interfaces.Services.IServiceImagem,Api.Security.AccessManager,Api.Security.AuthenticatedUser,Microsoft.AspNetCore.Hosting.IHostingEnvironment)">
+            <summary>
+            Construtor do usuário.
+            </summary>
+            <param name="unitOfWork">O método responsável pelo commit.</param>
+            <param name="serviceUsuario">O serviço de usuário.</param>
+            <param name="accessManager">Método responsável por gerar o token</param>
+            <param name="authenticatedUser">Obtém o usuário autenticado</param>
+        </member>
+        <member name="M:Api.Controllers.UsuarioController.Autenticar(Domain.Arguments.Usuario.AutenticarUsuarioRequest,System.Collections.Generic.IList{Microsoft.AspNetCore.Http.IFormFile})">
+            <summary>
+            Autenticar um usuário.
+            </summary>
+            <param name="request">O objeto usuario.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.UsuarioController.SalvarImagem(System.Collections.Generic.IList{Microsoft.AspNetCore.Http.IFormFile})">
+            <summary>
+            Autenticar um usuário.
+            </summary>
+            <param name="request">O objeto usuario.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Controllers.UsuarioController.Adicionar(Domain.Arguments.Usuario.AdicionarUsuarioRequest)">
+            <summary>
+            Adicionar um usuário.
+            </summary>
+            <param name="request">O objeto usuario.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Api.Controllers.VideoController">
+            <summary>
+            Controller de vídeo.
+            </summary>
+        </member>
+        <member name="M:Api.Controllers.VideoController.#ctor(Infra.Transactions.Interfaces.IUnitOfWork,Domain.Interfaces.Services.IServiceVideo,Api.Security.AuthenticatedUser)">
+            <summary>
+            Construtor do vídeo.
+            </summary>
+            <param name="unitOfWork">O método responsável pelo commit.</param>
+            <param name="serviceVideo">O serviço do vídeo.</param>
+            <param name="authenticatedUser">Obtém o usuário autenticado</param>
+        </member>
+        <member name="M:Api.Controllers.VideoController.Listar(System.Guid)">
+            <summary>
+            Serviço para listar vídeos de uma playList.
+            </summary>
+            <returns>A lista de vídeos.</returns>
+        </member>
+        <member name="M:Api.Controllers.VideoController.Listar(System.String)">
+            <summary>
+            Serviço para listar vídeos de uma tag.
+            </summary>
+            <returns>A lista de vídeos.</returns>
+        </member>
+        <member name="M:Api.Controllers.VideoController.Adicionar(Domain.Arguments.Video.AdicionarVideoRequest,System.Collections.Generic.IList{Microsoft.AspNetCore.Http.IFormFile})">
+            <summary>
+            Adicionar um novo vídeo.
+            </summary>
+            <param name="request">O objeto video.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Api.Security.AccessManager">
+            <summary>
+            Classe de geração de token
+            </summary>
+        </member>
+        <member name="M:Api.Security.AccessManager.#ctor(Api.Security.Security.TokenConfigurations,Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Construtor do método
+            </summary>
+            <param name="tokenConfigurations"></param>
+            <param name="httpContextAccessor"></param>
+        </member>
+        <member name="M:Api.Security.AccessManager.#ctor">
+            <summary>
+            Construtor padrão.
+            </summary>
+        </member>
+        <member name="M:Api.Security.AccessManager.GenerateToken(Domain.Arguments.Usuario.AutenticarUsuarioResponse)">
+            <summary>
+            Método para gerar o token do usuário.
+            </summary>
+            <param name="response">Os dados do usuário.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Security.AccessManager.GetValidationParameters(Api.Security.Security.TokenConfigurations)">
+            <summary>
+            Parametros de validação do token
+            </summary>
+            <param name="tokenConfigurations"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Security.AccessManager.ObterToken">
+            <summary>
+            Obter o token no cabeçalho http. Método obsoleto;
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Api.Security.AccessManager.ValidateToken(System.String,Api.Security.Security.TokenConfigurations)">
+            <summary>
+            Valida o token 
+            </summary>
+            <param name="token">O token</param>
+            <param name="tokenConfiguration">O objeto com os parâmetros de configuração do token</param>
+            <returns></returns>
+        </member>
+        <member name="T:Api.Security.AuthenticatedUser">
+            <summary>
+            Classe de usuário autenticado.
+            </summary>
+        </member>
+        <member name="M:Api.Security.AuthenticatedUser.#ctor(Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Construtor da classe.
+            </summary>
+            <param name="httpContextAccessor"></param>
+        </member>
+        <member name="P:Api.Security.AuthenticatedUser.Name">
+            <summary>
+            Nome do usuário.
+            </summary>
+        </member>
+        <member name="P:Api.Security.AuthenticatedUser.IsAutenticated">
+            <summary>
+            Informa se o usuário está autenticado.
+            </summary>
+        </member>
+        <member name="M:Api.Security.AuthenticatedUser.ObtertUsuarioAutenticado">
+            <summary>
+            Obtém o objeto AutenticarUsuarioResponse.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Api.Security.JwtSecurityExtension">
+            <summary>
+            Classe com as configração de validação do token.
+            </summary>
+        </member>
+        <member name="M:Api.Security.JwtSecurityExtension.AddJwtSecurity(Microsoft.Extensions.DependencyInjection.IServiceCollection,Api.Security.Security.TokenConfigurations)">
+            <summary>
+            Método statico para validação do token.
+            </summary>
+            <param name="services"></param>
+            <param name="tokenConfigurations"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Api.Security.Security">
+            <summary>
+            Classe de segurança.
+            </summary>
+        </member>
+        <member name="T:Api.Security.Security.TokenConfigurations">
+            <summary>
+            Obter configuração appConfig.
+            </summary>
+        </member>
+        <member name="T:Api.Security.Security.Token">
+            <summary>
+            Classe de retorno ao autenticar.
+            </summary>
+        </member>
+        <member name="T:Api.Startup">
+            <summary>
+            Classe de inicialização e configuração da api.
+            </summary>
+        </member>
+        <member name="M:Api.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Contrutor padrão.
+            </summary>
+            <param name="configuration"></param>
+        </member>
+        <member name="M:Api.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Método executado pelo runtime. Usando para adicionar serviços ao container.
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:Api.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IHostingEnvironment)">
+            <summary>
+            Método chamado pelo runtime. Usando para configurar o pipeline da requisição http.
+            </summary>
+            <param name="app"></param>
+            <param name="env"></param>
+        </member>
+    </members>
+</doc>
